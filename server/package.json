@@ -1,0 +1,30 @@
+{
+  "name": "cryptpaste-server",
+  "version": "1.0.0",
+  "description": "Server-side implementation of CryptPaste",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L index.js",
+    "start-prod": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gyataro/CryptPaste.git"
+  },
+  "author": "Xiwen Teoh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gyataro/CryptPaste/issues"
+  },
+  "homepage": "https://github.com/gyataro/CryptPaste#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.4"
+  },
+  "devDependencies": {
+    "log4js": "^6.4.1",
+    "nodemon": "^2.0.15"
+  }
+}
