@@ -1,5 +1,4 @@
-
-const constants = {
+const paste = {
     PASTE_FORMATS: [
         "bash",
         "c",
@@ -35,7 +34,28 @@ const constants = {
         "vb",
         "xml",
         "yaml"
-    ]
-};
+    ],
 
-module.exports = constants;
+    PASTE_VISIBILITY: [
+        "public",
+        "private",
+        "unlisted"
+    ]
+}
+
+const api = {
+    SUCCESS: "success",
+    FAIL: "fail",
+    ERROR: "error"
+}
+
+const error = {
+    VALIDATION: "ValidationError",
+    NOT_FOUND: "NotFoundError"
+}
+
+module.exports = {
+    paste,
+    api,
+    error
+}

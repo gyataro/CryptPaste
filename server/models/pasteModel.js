@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const constants = require("../loaders/constants");
 
 const pasteSchema = new mongoose.Schema({
     title: {
@@ -8,6 +9,10 @@ const pasteSchema = new mongoose.Schema({
     format: {
         type: String,
         lowercase: true,
+        enum: { 
+            values: constants.paste.PASTE_FORMATS, 
+            message: "Post must have valid format."
+        },
         required: [true, "Post must have a format."]
     },
     views: {
@@ -24,7 +29,12 @@ const pasteSchema = new mongoose.Schema({
     },
     visibility: {
         type: String,
-        default: "public"
+        lowercase: true,
+        enum: { 
+            values: constants.paste.PASTE_VISIBILITY, 
+            message: "Post must have a valid visibility setting."
+        },
+        default: constants.paste.PASTE_VISIBILITY[0]
     },
     isBurned: {
         type: Boolean,
