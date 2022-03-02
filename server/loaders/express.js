@@ -1,5 +1,5 @@
 const express = require("express");
-//const routes = require("./routes")
+const pasteRouter = require("../routes/pasteRouter");
 
 const app = express();
 
@@ -10,14 +10,14 @@ app.enable("trust proxy");
 app.use(express.json());
 
 // set all endpoints
-// app.use(routes);
+app.use("/api/paste", pasteRouter);
 
 // set 404 not found handler
 app.use((req, res, next) => {
     res.status(404);
     res.json({
         status: "fail",
-        data: { "message": "Request not found." }
+        message: "Request not found."
     });
 });
 

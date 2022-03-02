@@ -6,5 +6,3 @@ const mongoose = require('./loaders/mongoose');
 const app = require('./loaders/express');
 
 app.listen(configs.PORT, () => logger.debug(`Listening on port ${configs.PORT}`));
-
-// app.listen(configs.PORT, () => logger.debug(`Listening on port ${port}`));
