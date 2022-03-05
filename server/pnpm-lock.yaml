@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   dotenv: ^16.0.0
   express: ^4.17.3
+  hashids: ^2.2.10
   log4js: ^6.4.1
   mongoose: ^6.2.4
   nodemon: ^2.0.15
@@ -10,6 +11,7 @@ specifiers:
 dependencies:
   dotenv: 16.0.0
   express: 4.17.3
+  hashids: 2.2.10
   mongoose: 6.2.4
 
 devDependencies:
@@ -529,6 +531,10 @@ packages:
     resolution: {integrity: sha512-UqBRqi4ju7T+TqGNdqAO0PaSVGsDGJUBQvk9eUWNGRY1CFGDzYhLWoM7JQEemnlvVcv/YEmc2wNW8BC24EnUsw==}
     engines: {node: '>=8'}
     dev: true
+
+  /hashids/2.2.10:
+    resolution: {integrity: sha512-nXnYums7F8B5Y+GSThutLPlKMaamW1yjWNZVt0WModiJfdjaDZHnhYTWblS+h1OoBx3yjwiBwxldPP3nIbFSSA==}
+    dev: false
 
   /http-cache-semantics/4.1.0:
     resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}

@@ -52,7 +52,7 @@ exports.getAllPastes = async (req, res, next) => {
 
 exports.getOnePaste = async (req, res, next) => {
     Paste
-        .findByIdAndUpdate(req.params.id, {$inc: {views: 1}})
+        .findOneAndUpdate({ urlId: req.params.id }, {$inc: {views: 1}})
         .then(handleResponse(res))
         .catch(handleError(res));
 };
