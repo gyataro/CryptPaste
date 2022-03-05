@@ -7,11 +7,11 @@ const configs = {
     NODE_ENV: process.env.NODE_ENV || 'development',
     PORT: parseInt(process.env.PORT, 10) || 3000,
     LOG_LEVEL: process.env.LOG_LEVEL || 'debug',
-    URL_HASH_SALT: process.env.URL_HASH_SALT || '',
-    URL_HASH_LENGTH: parseInt(process.env.URL_HASH_LENGTH, 10) || 8,
-    URL_HASH_LO: parseInt(process.env.URL_HASH_LO, 10) || 65536
-};
 
-console.log(configs);
+    PASTE_URL_HASH_SALT: process.env.URL_HASH_SALT || '',
+    PASTE_URL_HASH_LENGTH: parseInt(process.env.URL_HASH_LENGTH, 10) || 8,
+    PASTE_URL_HASH_LO: parseInt(process.env.URL_HASH_LO, 10) || 65536,
+    PASTE_SECRET_COST_FACTOR: parseInt(process.env.PASTE_SECRET_COST_FACTOR, 10) || 8
+};
 
 module.exports = configs;

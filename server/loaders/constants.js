@@ -51,7 +51,8 @@ const api = {
 
 const error = {
     VALIDATION: "ValidationError",
-    NOT_FOUND: "NotFoundError"
+    NOT_FOUND: "NotFoundError",
+    FORBIDDEN: "ForbiddenError"
 }
 
 module.exports = {

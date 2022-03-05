@@ -13,7 +13,7 @@ const counterSchema = new mongoose.Schema({
     },
     lo: {
         type: Number,
-        default: configs.URL_HASH_LO
+        default: configs.PASTE_URL_HASH_LO
     }
 })
 
