@@ -5,8 +5,6 @@ Security: uploaded content can be optionally encrypted, the server will have no 
 
 Privacy: users can set an expiry time, toggle visibility settings, and toggle burn after reading on the pastes.
 
-Visibility: there are 3 visibility settings: public pastes will show up in menus and archives, unlisted pastes can only be accessed via the paste link, private pastes can only be viewed by the author.
-
 ## Development
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
@@ -15,7 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 Rename environment variables.
-```sh
+```
 .env.example => .env
 ```
 Build, start, and attach containers.
