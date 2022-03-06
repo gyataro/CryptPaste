@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const hashids = require("hashids");
 const bcrypt = require("bcrypt");
-const Counter = require("../models/counterModel");
 const constants = require("../loaders/constants");
 const configs = require("../configs");
+const Counter = require("../models/counterModel");
 
 let hasher = new hashids(configs.PASTE_URL_HASH_SALT, configs.PASTE_URL_HASH_LENGTH);
 let currentHi = -1;
@@ -35,7 +35,7 @@ const pasteSchema = new mongoose.Schema({
     },
     secret: {
         type: String,
-        default: ""
+        default: null
     },
     content: {
         type: String,

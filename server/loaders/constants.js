@@ -44,19 +44,21 @@ const paste = {
 }
 
 const api = {
-    SUCCESS: "success",
-    FAIL: "fail",
-    ERROR: "error"
-}
+    status: {
+        SUCCESS: "success",
+        FAIL: "fail",
+        ERROR: "error"
+    },
 
-const error = {
-    VALIDATION: "ValidationError",
-    NOT_FOUND: "NotFoundError",
-    FORBIDDEN: "ForbiddenError"
+    error: {
+        VALIDATION: "ValidationError",
+        NOT_FOUND : "NotFoundError",
+        FORBIDDEN: "ForbiddenError",
+        FORBIDDEN_PASTE: "ForbiddenPasteError"
+    }
 }
 
 module.exports = {
     paste,
-    api,
-    error
+    api
 }

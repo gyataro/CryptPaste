@@ -1,7 +1,11 @@
 const Paste = require("../models/pasteModel");
 
-const { handleError, handleResponse } = require("./util");
-const { handleBurn, handleSecret } = require("./util/pasteUtil");
+const { 
+    handleResponse, 
+    handleCreated, 
+    handleLockedPaste,
+    handleError
+} = require("./utils/pasteUtil");
 
 exports.getAllPastes = async (req, res, next) => {
     Paste
@@ -13,8 +17,7 @@ exports.getAllPastes = async (req, res, next) => {
 exports.getOnePaste = async (req, res, next) => {
     Paste
         .findOneAndUpdate({ urlId: req.params.id }, {$inc: {views: 1}})
-        .then(handleSecret(req))
-        .then(handleBurn())
+        .then(handleLockedPaste(req))
         .then(handleResponse(res))
         .catch(handleError(res));
 };
@@ -22,7 +25,7 @@ exports.getOnePaste = async (req, res, next) => {
 exports.createPaste = async (req, res, next) => {
     Paste
         .create(req.body)
-        .then(handleResponse(res))
+        .then(handleCreated(res))
         .catch(handleError(res));
 };
 
