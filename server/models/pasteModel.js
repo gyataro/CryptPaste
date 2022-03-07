@@ -39,6 +39,7 @@ const pasteSchema = new mongoose.Schema({
     },
     content: {
         type: String,
+        maxLength: 256000,
         required: [true, "Paste must have content."]
     },
     visibility: {
