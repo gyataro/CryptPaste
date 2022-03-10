@@ -14,7 +14,6 @@ const paste = {
         "kotlin",
         "less",
         "lua",
-        "makefile",
         "markdown",
         "objectivec",
         "php",

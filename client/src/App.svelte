@@ -1,7 +1,7 @@
 <script>
 	import Style from './components/Style.svelte';
 	import Navbar from './components/Navbar.svelte';
-	import PasteForm from './components/PasteForm.svelte';
+	import PasteForm from './components/PasteForm/PasteForm.svelte';
 	export let name;
 </script>
 

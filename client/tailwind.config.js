@@ -1,7 +1,7 @@
 module.exports = {
     content: [
         './src/*.svelte', 
-        './src/components/*.svelte'
+        './src/components/**/*.svelte'
     ],
     darkMode: 'media',
     theme: {
