@@ -1,6 +1,7 @@
 version: "3"
 services:
   client:
+    env_file: .env
     build:
       context: .
       dockerfile: ./client/Dockerfile
@@ -8,14 +9,12 @@ services:
     volumes:
       - ./client:/cryptpaste/client:rw
       - /cryptpaste/client/node_modules
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-      - API_URL=http://localhost:3000/api
     ports:
-      - "5000:8080"
+      - "${CLIENT_PORT}:8080"
       - "35729:35729"
 
   server:
+    env_file: .env
     build:
       context: .
       dockerfile: ./server/Dockerfile
@@ -24,7 +23,7 @@ services:
       - ./server:/cryptpaste/server:ro
       - /cryptpaste/server/node_modules
     ports:
-      - "3000:3000"
+      - "${SERVER_PORT}:3000"
     depends_on:
       - mongo
     

@@ -1,6 +1,6 @@
 <script>
-	import Style from './lib/components/Style.svelte';
-	import Navbar from './lib/components/Navbar.svelte';
+	import Style from './components/Style.svelte';
+	import Navbar from './components/Navbar.svelte';
 	import Paste from './routes/readPaste/index.svelte';
 	import PasteForm from './routes/createPaste/index.svelte';
 	import { Route } from 'tinro';

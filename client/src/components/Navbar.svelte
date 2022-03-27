@@ -31,9 +31,9 @@
 		<!-- Navbar Menu -->
 		{#if isOpen || innerWidth >= 640}
 			<ul class="max-w-screen-xl">
-				<li class="sm:inline-block">
+				<li class="sm:inline-block sm:pt-0 pt-4">
 					<a href="/">
-					<button class="border-teal-600 rounded-md border-2 px-8 py-1">
+					<button class="border-teal-600 rounded-md border-2 px-8 py-1 hover:bg-teal-100">
 						<span class="text-teal-600 font-bold text-lg">New Paste</span>
 					</button>
 					</a>

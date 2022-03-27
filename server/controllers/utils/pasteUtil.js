@@ -25,7 +25,6 @@ function handleCreated(res) {
     }
 }
 
-
 function handleLockedPaste(req) {
     return function(result) {
         if (!result) throw new NotFoundError();
@@ -43,8 +42,8 @@ function handleLockedPaste(req) {
 
     // Check if paste is password protected. If so, user must provide a correct password to unlock it.
     function unlockSecret(result, lockReason) {
-        var isSecretProvided = Boolean(req.body.secret);
-        var isSecretCorrect  = isSecretProvided && bcrypt.compareSync(req.body.secret, result.secret);
+        var isSecretProvided = Boolean(req.header('Secret'));
+        var isSecretCorrect  = isSecretProvided && bcrypt.compareSync(req.header('Secret'), result.secret);
 
         lockReason.isSecretProvided = isSecretProvided;
         lockReason.isSecretCorrect = isSecretCorrect;

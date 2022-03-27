@@ -1,11 +1,12 @@
 <script>
-    import Divider from "../../lib/components/Divider.svelte";
-    import Input from "./Input.svelte";
+    import Divider from "../../components/Divider.svelte";
+    import Input from "../../components/Input.svelte";
     import constants from "./constants.js";
-
+    import pasteService from "../../service/paste.js";
+  
     let hasSecret = false;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         const formData = new FormData(e.target);
         const data = {};
         
@@ -14,10 +15,17 @@
             
             if(key == "expireAt") 
                 data[key] = Date.now() + parseInt(value, 10);
+            else if(key == "isBurned")
+                data[key] = true;
             else
                 data[key] = value;
         }
+
         console.log(data)
+
+        await pasteService.createPaste(data)
+            .then(res => console.log(res))
+            .catch(err => console.log(err.response.data))
     }
 </script>
 

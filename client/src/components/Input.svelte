@@ -87,4 +87,10 @@
         </div>
     </div>
 
+{:else if type == "confirm"}
+
+    <button type="submit" class="w-full shadow bg-red-800 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+        {label}
+    </button>
+
 {/if}

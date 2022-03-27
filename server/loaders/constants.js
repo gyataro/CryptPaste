@@ -20,7 +20,6 @@ const paste = {
         "perl",
         "plaintext",
         "python",
-        "python-repl",
         "r",
         "ruby",
         "rust",
