@@ -1,17 +1,21 @@
 <script>
-    import Divider from "../Divider.svelte";
+    import Divider from "../../lib/components/Divider.svelte";
     import Input from "./Input.svelte";
     import constants from "./constants.js";
 
     let hasSecret = false;
 
     const handleSubmit = (e) => {
-        console.log(hasSecret);
         const formData = new FormData(e.target);
         const data = {};
+        
         for (let field of formData) {
             const [key, value] = field;
-            data[key] = value;
+            
+            if(key == "expireAt") 
+                data[key] = Date.now() + parseInt(value, 10);
+            else
+                data[key] = value;
         }
         console.log(data)
     }

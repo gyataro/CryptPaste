@@ -32,9 +32,11 @@
 		{#if isOpen || innerWidth >= 640}
 			<ul class="max-w-screen-xl">
 				<li class="sm:inline-block">
+					<a href="/">
 					<button class="border-teal-600 rounded-md border-2 px-8 py-1">
 						<span class="text-teal-600 font-bold text-lg">New Paste</span>
 					</button>
+					</a>
 				</li>
 			</ul>
 		{/if}

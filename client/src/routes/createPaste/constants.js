@@ -4,15 +4,15 @@ const placeholder = {
 }
 
 const expiration = [
-    { value: "N", label: "Never"},
-    { value: "10M", label: "10 Minutes" },
-    { value: "1H", label: "1 Hour" },
-    { value: "1D", label: "1 Day" },
-    { value: "1W", label: "1 Week" },
-    { value: "2W", label: "2 Weeks" },
-    { value: "1M", label: "1 Month" },
-    { value: "6M", label: "6 Months" },
-    { value: "1Y", label: "1 Year" }
+    { value: 0, label: "Never"},
+    { value: 600000, label: "10 Minutes" },
+    { value: 3600000, label: "1 Hour" },
+    { value: 86400000, label: "1 Day" },
+    { value: 604800000, label: "1 Week" },
+    { value: 1209600000, label: "2 Weeks" },
+    { value: 2629743000, label: "1 Month" },
+    { value: 15778458000, label: "6 Months" },
+    { value: 31556926000, label: "1 Year" }
 ]
 
 const visibility = [
