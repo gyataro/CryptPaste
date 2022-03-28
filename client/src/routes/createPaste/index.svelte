@@ -29,7 +29,7 @@
     }
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="px-4 py-4 max-w-screen-xl mx-auto">
+<form on:submit|preventDefault={handleSubmit}>
 
     <Divider title="New Paste"/>
     

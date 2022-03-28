@@ -2,7 +2,8 @@
     import { onMount } from 'svelte';
     import { meta } from 'tinro';
     import Divider from '../../components/Divider.svelte';
-    import Input from "../../components/Input.svelte";
+    import Input from '../../components/Input.svelte';
+    import NotFound from '../../components/404.svelte';
     import Paste from './paste.svelte';
     import pasteService from '../../service/paste.js';
 
@@ -49,15 +50,14 @@
     }
 </script>
 
-<div class="px-4 py-4 max-w-screen-xl mx-auto">
+<div>
     {#if paste}
 
         <Paste paste={paste}/>
 
     {:else if error404}
 
-        <h1 class="font-bold text-2xl">404 Not Found</h1>
-        <p>Page does not exist.</p>
+        <NotFound />
 
     {:else if error403}
 

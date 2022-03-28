@@ -1,7 +1,7 @@
 <script>
-	let logo = "./images/logo.svg";
-	let menu = "./icons/menu-open.svg";
-	let close = "./icons/menu-close.svg";
+	let logo = "/images/logo.svg";
+	let menu = "/icons/menu-open.svg";
+	let close = "/icons/menu-close.svg";
 
 	let isOpen = false;
 	let innerWidth = 0;
