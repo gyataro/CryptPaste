@@ -11,7 +11,7 @@
     let paste = null;
     let error404 = false;
     let error403 = false;
-    let errorData = null;
+    let error = null;
 
     onMount(async () => {
         await pasteService.readPaste(route.params.id)
@@ -25,11 +25,11 @@
 
         if(status == 404) {
             error404 = true
-        }
-        if(status == 403) {
+        } else if(status == 403) {
             error403 = true
-            errorData = data.message
-            console.log(data)
+            error = data.message
+        } else {
+            alert("Something went wrong, please contact support!")
         }
     }
 
@@ -63,20 +63,20 @@
 
         <h1 class="font-bold text-2xl">Locked Paste</h1>
         <form on:submit|preventDefault={handleSubmit}>
-            <Divider/>
-            {#if errorData.isBurned}
+            <Divider />
+            {#if error.isBurned}
                 <div class="rounded border-2 border-red-600 p-4 mb-6">
                     <h2 class="font-bold text-red-800 text-xl">Burn after read</h2>
                     <p>Once accessed, you can no longer view this paste, it will be <b>permanently removed</b>.</p>
                     <p>You're about to burn this paste: <b>{route.params.id}</b> after reading it.</p>
                 </div>
-                {#if !errorData.isSecret}
-                    <Input label="Continue" type="confirm" />
+                {#if !error.isSecret}
+                    <Input label="Continue" id="confirm" type="confirm" />
                 {/if}
             {/if}
-            {#if errorData.isSecret}
-                <Input label="Password" id="password" type="password" value="" />
-                <Input label="Confirm" type="submit" />
+            {#if error.isSecret}
+                <Input label="Password" id="password" type="password" value="" error={(error.isSecretProvided && !error.isSecretCorrect)? "Incorrect password" : null}/>
+                <Input label="Confirm" id="submit" type="submit" />
             {/if}
         </form>
 

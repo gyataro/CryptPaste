@@ -8,7 +8,7 @@ const app = express();
 app.enable("trust proxy");
 
 // app has CORS enabled
-app.use(cors({}));
+app.use(cors({ exposedHeaders: 'Location' }));
 
 // recognise incoming request object as JSON
 app.use(express.json());

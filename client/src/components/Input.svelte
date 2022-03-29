@@ -1,11 +1,12 @@
 <script>
     let chevronDown = "./icons/chevron-down.svg";
 
-    export let label;
     export let id;
-    export let type;
-    export let value;
-    export let placeholder;
+    export let error = null;
+    export let label = null;
+    export let type = null;
+    export let value = null;
+    export let placeholder = null;
 </script>
 
 {#if ["text", "password"].includes(type)}
@@ -19,7 +20,8 @@
         <div class="md:w-2/3">
             <input name={id} {id} {type} {value} {placeholder} class="appearance-none
                 bg-gray-100
-                border-2 border-gray-300 
+                {(error)? "border-red-500" : "border-gray-300"}
+                border-2 
                 rounded 
                 w-full
                 py-2
@@ -27,6 +29,7 @@
                 text-gray-700
                 leading-tight
                 focus:bg-white focus:border-teal-500 focus:outline-none">
+            {#if error}<p class="text-red-500 font-bold">{error}</p>{/if}
         </div>
     </div>
 
@@ -51,13 +54,14 @@
             </label>
         </div>
         <div class="md:w-2/3">
-            <select name={id} id class="appearance-none
+            <select name={id} {id} class="appearance-none
                 w-full
                 py-2
                 px-4
                 text-gray-700
                 bg-gray-100
-                border-2 border-gray-300
+                {(error)? "border-red-500" : "border-gray-300"}
+                border-2
                 rounded
                 transition
                 ease-in-out
@@ -74,7 +78,8 @@
 
 {:else if type == "textarea"}
 
-    <textarea name={id} {id} aria-label={label} rows=12 class="w-full focus:outline-none"/>
+    <textarea name={id} {id} aria-label={label} rows=12 class="w-full focus:outline-none border-2 {(error)? "border-red-500" : "border-gray-300"}"/>
+    {#if error}<p class="text-red-500 font-bold">{error}</p>{/if}
 
 {:else if type == "submit"}
 

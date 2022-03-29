@@ -19,7 +19,7 @@ function handleCreated(res) {
     return function(result) {
         if (!result) throw new InternalError();
 
-        res.status(201).location(`/paste/${result.urlId}`).json({
+        res.status(201).location(`/${result.urlId}`).json({
             status: constants.api.SUCCESS
         });
     }

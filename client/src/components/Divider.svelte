@@ -1,5 +1,5 @@
 <script>
-    export let title;
+    export let title = null;
 </script>
 
 <div class="relative flex py-5 items-center">

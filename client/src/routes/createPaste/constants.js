@@ -3,7 +3,7 @@ const placeholder = {
     secret: "********"
 }
 
-const expiration = [
+const expiresAt = [
     { value: 0, label: "Never"},
     { value: 600000, label: "10 Minutes" },
     { value: 3600000, label: "1 Hour" },
@@ -21,7 +21,7 @@ const visibility = [
     { value: "private", label: "Private" }
 ]
 
-const syntax = [
+const format = [
     { value: "bash", label: "Bash" },
     { value: "c", label: "C" },
     { value: "csharp", label: "C#" },
@@ -58,7 +58,7 @@ const syntax = [
 
 export default {
     placeholder,
-    expiration,
+    expiresAt,
     visibility,
-    syntax
+    format
 }
