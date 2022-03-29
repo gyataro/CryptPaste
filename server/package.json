@@ -4,8 +4,8 @@
   "description": "Server-side implementation of CryptPaste",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L index.js",
-    "start-prod": "node index.js",
+    "dev": "nodemon -L index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
