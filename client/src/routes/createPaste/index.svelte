@@ -1,11 +1,13 @@
 <script>
-    import Divider from "../../components/Divider.svelte";
-    import Input from "../../components/Input.svelte";
-    import constants from "./constants.js";
-    import pasteService from "../../service/paste.js";
-    import { router } from 'tinro';
+    import Divider from "../../components/Divider.svelte"
+    import Input from "../../components/Input.svelte"
+    import constants from "./constants.js"
+    import pasteService from "../../service/paste.js"
+    import { router } from 'tinro'
   
-    let hasSecret = false;
+    let hasSecret = false
+    let hasSubmit = false
+
     let error = {
         content: null,
         title: null,
@@ -28,23 +30,26 @@
     }
 
     const handleSubmit = async (e) => {
-        const formData = new FormData(e.target);
-        const data = {};
+        hasSubmit = true
+
+        const formData = new FormData(e.target)
+        const data = {}
         
         for (let field of formData) {
-            const [key, value] = field;
+            const [key, value] = field
             
-            if(key == "expiresAt") 
+            if(key == "expiresAt")
                 data[key] = Date.now() + parseInt(value, 10);
             else if(key == "isBurned")
-                data[key] = true;
+                data[key] = true
             else
-                data[key] = value;
+                data[key] = value
         }
 
         await pasteService.createPaste(data)
             .then(res => router.goto(res.location))
             .catch(err => handleError(err))
+            .finally(() => hasSubmit = false)
     }
 </script>
 
@@ -58,7 +63,7 @@
 
     <Input label="Title" id="title" type="text" value="" placeholder={constants.placeholder.title} error={error.title} />
 
-    <Input label="Expiration" id="expireAt" type="select" value={constants.expiresAt} error={error.expiresAt} />
+    <Input label="Expiration" id="expiresAt" type="select" value={constants.expiresAt} error={error.expiresAt} />
 
     <Input label="Visibility" id="visibility" type="select" value={constants.visibility} error={error.visibility} />
 
@@ -72,5 +77,5 @@
         <Input label="Password" id="secret" type="password" value="" placeholder={constants.placeholder.secret} error={error.secret} />
     {/if}
 
-    <Input label="Create Paste" id="submit" type="submit" />
+    <Input label="Create Paste" id="submit" type="submit" submit={hasSubmit}/>
 </form>

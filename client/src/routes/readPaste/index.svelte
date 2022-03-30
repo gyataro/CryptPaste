@@ -1,17 +1,18 @@
 <script>
-    import { onMount } from 'svelte';
-    import { meta } from 'tinro';
-    import Divider from '../../components/Divider.svelte';
-    import Input from '../../components/Input.svelte';
-    import NotFound from '../../components/404.svelte';
-    import Paste from './paste.svelte';
-    import pasteService from '../../service/paste.js';
+    import { onMount } from 'svelte'
+    import { meta } from 'tinro'
+    import Divider from '../../components/Divider.svelte'
+    import Input from '../../components/Input.svelte'
+    import NotFound from '../../components/404.svelte'
+    import Paste from './paste.svelte'
+    import pasteService from '../../service/paste.js'
 
-    let route = meta();
-    let paste = null;
-    let error404 = false;
-    let error403 = false;
-    let error = null;
+    let route = meta()
+    let paste = null
+    let hasSubmit = false
+    let error404 = false
+    let error403 = false
+    let error = null
 
     onMount(async () => {
         await pasteService.readPaste(route.params.id)
@@ -34,17 +35,20 @@
     }
 
     const handleSubmit = async (e) => {
-        const formData = new FormData(e.target);
-        const data = {};
+        const formData = new FormData(e.target)
+        const data = {}
+
+        hasSubmit = true
         
         for (let field of formData) {
-            const [key, value] = field;
-            data[key] = value;
+            const [key, value] = field
+            data[key] = value
         }
 
         await pasteService.readPaste(route.params.id, true, data.password)
             .then(res => { paste = res.data })
             .catch(err => handleError(err))
+            .finally(() => hasSubmit = false)
 
         Prism.highlightAll()
     }
@@ -76,7 +80,7 @@
             {/if}
             {#if error.isSecret}
                 <Input label="Password" id="password" type="password" value="" error={(error.isSecretProvided && !error.isSecretCorrect)? "Incorrect password" : null}/>
-                <Input label="Confirm" id="submit" type="submit" />
+                <Input label="Confirm" id="submit" type="submit" submit={hasSubmit} />
             {/if}
         </form>
 

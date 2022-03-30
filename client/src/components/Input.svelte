@@ -1,7 +1,9 @@
 <script>
-    let chevronDown = "./icons/chevron-down.svg";
+    let chevronDown = "/icons/chevron-down.svg";
+    let loading = "/icons/loading.svg";
 
     export let id;
+    export let submit = null;
     export let error = null;
     export let label = null;
     export let type = null;
@@ -73,6 +75,7 @@
                 {/each}
             </select>
             <img src={chevronDown} class="float-right -mt-8 mr-4 z-2 relative" alt="dropdown" />
+            {#if error}<p class="text-red-500 font-bold">{error}</p>{/if}
         </div>
     </div>
 
@@ -86,16 +89,26 @@
     <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">
-        <button type="submit" class="w-full shadow bg-teal-800 hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+        <button type="submit" disabled={submit} class="w-full shadow bg-teal-800 disabled:bg-neutral-600 disabled:hover:bg-neutral-600 disabled:text-white hover:bg-teal-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+            {#if submit}
+            Submitting
+            <img src={loading} class="inline-block ml-2 w-5" alt="spinner" />
+            {:else}
             {label}
+            {/if}
         </button>
         </div>
     </div>
 
 {:else if type == "confirm"}
 
-    <button type="submit" class="w-full shadow bg-red-800 hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+    <button type="submit" disabled={submit} class="w-full shadow bg-red-800 disabled:bg-neutral-600 disabled:hover:bg-neutral-600 disabled:text-white hover:bg-red-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+        {#if submit}
+        Submitting
+        <img src={loading} class="inline-block ml-2 w-5" alt="spinner" />
+        {:else}
         {label}
+        {/if}
     </button>
 
 {/if}
