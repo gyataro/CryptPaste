@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const configs = require('../configs');
 const pasteRouter = require("../routes/pasteRouter");
 
 const app = express();
@@ -8,7 +9,7 @@ const app = express();
 app.enable("trust proxy");
 
 // app has CORS enabled
-app.use(cors({ exposedHeaders: 'Location' }));
+app.use(cors({ origin: configs.CLIENT_URL, exposedHeaders: 'Location' }));
 
 // recognise incoming request object as JSON
 app.use(express.json());

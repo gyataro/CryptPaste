@@ -11,7 +11,9 @@ const configs = {
     PASTE_URL_HASH_SALT: process.env.URL_HASH_SALT || '',
     PASTE_URL_HASH_LENGTH: parseInt(process.env.URL_HASH_LENGTH, 10) || 8,
     PASTE_URL_HASH_LO: parseInt(process.env.URL_HASH_LO, 10) || 65536,
-    PASTE_SECRET_COST_FACTOR: parseInt(process.env.PASTE_SECRET_COST_FACTOR, 10) || 8
+    PASTE_SECRET_COST_FACTOR: parseInt(process.env.PASTE_SECRET_COST_FACTOR, 10) || 8,
+
+    CLIENT_URL: process.env.CLIENT_URL || 'localhost:3000'
 };
 
 module.exports = configs;
